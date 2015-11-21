@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+	<meta charset="utf-8">
+	<title>Contact Card</title>
+	<link rel="stylesheet" type="text/css" href="styles.css">
+	<meta name="description" content="Coding dojo jquery advanced contact card.">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+	
+	<script>
+		$(document).ready(function(){
+		    $('#form_1').submit(function(){
+		    	$('#contact_cards').append("<li>"+
+								    		"<h1>"+$('#first_name').val()+" "+$('#last_name').val()+"</h1>"+"<p class='hide'>"+$('#desc').val()+"</p>"+
+							    			"</li>"
+								    		);
+		    	$('#contact_cards p').hide();
+		    	$('.txt').val("");
+		    	return false;
+		    });
+		});
+		$(document).on('click','h1',function(){
+			$(this).siblings().toggle();
+		});
+	</script>
+
+</head>
+<body>
+	<div id="container">
+		<div id="left_side">
+			<form id="form_1">
+				<div id="form_top">
+					<label>
+						First Name:
+						<input type="text" class="txt" id="first_name">
+					</label>
+					<label>
+						Last Name:
+						<input type="text" class="txt" id="last_name">
+					</label>
+				</div><!-- form_top -->
+				<div id="form_bottom">
+					<label> 
+						Description
+						<textarea class="txt" id="desc"></textarea>
+					</label>
+					<input type="submit" id="submit" value="Submit!" class="btn">
+				</div><!-- form_bottom -->
+			</form>
+		</div><!-- left_side -->
+		<div id="right_side">
+			<ul id="contact_cards">
+				
+			</ul>
+		</div><!-- right_side -->
+	</div><!-- container -->
+
+</body>
+</html>
